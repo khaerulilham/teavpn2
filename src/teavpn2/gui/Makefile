@@ -8,18 +8,28 @@
 #
 
 DEP_DIRS += $(BASE_DEP_DIR)/src/teavpn2/gui
+GUI_DIR := $(BASE_DIR)/src/teavpn2/gui
+
+GUI_RESOURCES := \
+	$(GUI_DIR)/gui_app.gresources.xml \
+	$(GUI_DIR)/ui/window.ui \
+	$(GUI_DIR)/ui/menu.ui
 
 OBJ_TMP_CC := \
-	$(BASE_DIR)/src/teavpn2/gui/entry.o \
-	$(BASE_DIR)/src/teavpn2/gui/event_callback.o \
-	$(BASE_DIR)/src/teavpn2/gui/gui_config.o \
-	$(BASE_DIR)/src/teavpn2/gui/gui_header.o \
-	$(BASE_DIR)/src/teavpn2/gui/gui_home.o \
-	$(BASE_DIR)/src/teavpn2/gui/gui_utils.o \
-	$(BASE_DIR)/src/teavpn2/gui/gui_window.o
+	$(GUI_DIR)/entry.o \
+	$(GUI_DIR)/event_callback.o \
+	$(GUI_DIR)/gui_app.o \
+	$(GUI_DIR)/gui_app_window.o \
+	$(GUI_DIR)/gui_resources.o
 
 OBJ_PRE_CC += $(OBJ_TMP_CC)
 
-$(OBJ_TMP_CC):
+$(GUI_DIR)/gui_resources.c: $(GUI_RESOURCES)
+	$(shell pkg-config --variable glib_compile_resources gio-2.0) \
+	$(GUI_DIR)/gui_app.gresources.xml --target $(@) \
+	--sourcedir $(GUI_DIR) --generate-source
+
+$(OBJ_TMP_CC): $(GUI_DIR)/gui_resources.c
 	$(CC_PRINT)
 	$(Q)$(CC) $(PIE_FLAGS) $(DEPFLAGS) $(CFLAGS) -c $(O_TO_C) -o $(@)
+

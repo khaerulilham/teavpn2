@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- SPDX-License-Identifier: GPL-2.0-only
+ Copyright (C) 2021  Khaerul Ilham <khaerulilham163@gmail.com>
+-->
+
+<gresources>
+  <gresource prefix="/org/teainside/teavpn2">
+		<file preprocess="xml-stripblanks">ui/window.ui</file>
+		<file preprocess="xml-stripblanks">ui/menu.ui</file>
+  </gresource>
+</gresources>
+

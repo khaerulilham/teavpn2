@@ -3,27 +3,11 @@
  * Copyright (C) 2021  Khaerul Ilham <khaerulilham163@gmail.com>
  */
 
-#include <teavpn2/gui/gui.h>
-#include <teavpn2/gui/event_callback.h>
-
-static void app_activate(GtkApplication *self, gpointer user_data)
-{
-	(void) self;
-	gui_window_create((Gui *) user_data);
-}
+#include <teavpn2/gui/common.h>
+#include <teavpn2/gui/gui_app.h>
 
 
 int gui_entry(int argc, char *argv[])
 {
-	int ret;
-	Gui gui = {
-		.self = gtk_application_new(GUI_ID, G_APPLICATION_FLAGS_NONE)
-	};
-
-	register_client_callbacks();
-	g_signal_connect(gui.self, "activate", G_CALLBACK(app_activate), &gui);
-	ret = g_application_run(G_APPLICATION(gui.self), argc, argv);
-	g_object_unref(gui.self);
-
-	return ret;
+	return g_application_run(G_APPLICATION(gui_app_new()), argc, argv);
 }

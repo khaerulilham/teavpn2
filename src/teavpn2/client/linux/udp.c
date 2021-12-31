@@ -3,6 +3,7 @@
  * Copyright (C) 2021  Ammar Faizi
  */
 
+#include <teavpn2/gui/event_callback.h>
 #include <poll.h>
 #include <unistd.h>
 #include <signal.h>
@@ -11,7 +12,6 @@
 #include <netinet/in.h>
 #include <teavpn2/net/linux/iface.h>
 #include <teavpn2/client/linux/udp.h>
-#include <teavpn2/gui/event_callback.h>
 
 static struct cli_udp_state *g_state = NULL;
 
@@ -726,4 +726,10 @@ out:
 
 	destroy_state(state);
 	return ret;
+}
+
+void teavpn2_client_udp_stop(void)
+{
+	if (g_state)
+		g_state->stop = true;
 }

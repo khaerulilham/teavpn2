@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- SPDX-License-Identifier: GPL-2.0-only
+ Copyright (C) 2021  Khaerul Ilham <khaerulilham163@gmail.com>
+-->
+
+<interface>
+	<menu id="menu">
+		<section>
+			<item>
+				<attribute name="label" translatable="yes">_Open</attribute>
+				<attribute name="action">app.open</attribute>
+			</item>
+		</section>
+		<section>
+			<item>
+				<attribute name="label" translatable="yes">_Preferences</attribute>
+				<attribute name="action">app.preferences</attribute>
+			</item>
+		</section>
+		<section>
+			<item>
+				<attribute name="label" translatable="yes">_About</attribute>
+				<attribute name="action">app.about</attribute>
+			</item>
+		</section>
+	</menu>
+</interface>

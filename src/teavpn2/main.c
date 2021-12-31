@@ -8,7 +8,7 @@
 
 #ifdef CONFIG_GUI
 #undef fallthrough
-#include <teavpn2/gui/gui.h>
+#include <teavpn2/gui/common.h>
 #endif
 
 void show_version(void)

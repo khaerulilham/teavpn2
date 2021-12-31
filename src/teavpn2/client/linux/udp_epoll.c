@@ -3,13 +3,13 @@
  * Copyright (C) 2021  Ammar Faizi
  */
 
+#include <teavpn2/gui/event_callback.h>
 #include <unistd.h>
 #include <signal.h>
 #include <pthread.h>
 #include <sys/epoll.h>
 #include <teavpn2/client/common.h>
 #include <teavpn2/client/linux/udp.h>
-#include <teavpn2/gui/event_callback.h>
 
 static __cold int create_epoll_fd(void)
 {
